@@ -3,7 +3,7 @@ import { AIMessage } from '../types/index.ts'
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
-export async function callGemini(messages: AIMessage[]): Promise<string> {
+export async function callGemini(messages: AIMessage[], maxTokens: number): Promise<string> {
     const chat = await ai.chats.create({
         model: "gemini-2.0-flash",
         history: messages.slice(0, -1).map(msg => ({
@@ -17,7 +17,6 @@ export async function callGemini(messages: AIMessage[]): Promise<string> {
     const streamResult = await chat.sendMessageStream({
         message: [{ text: userMessage }],
     })
-
 
     let fullTextResponse = "";
     for await (const chunk of streamResult) {
