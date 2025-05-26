@@ -3,4 +3,5 @@ export const config = {
   geminiApiKey: process.env.GEMINI_API_KEY,
   geminiModel: process.env.GEMINI_MODEL || 'gemini-2.0-flash-lite',
   nodeEnv: process.env.NODE_ENV || 'Production',
+  frontendUrl: process.env.VITE_FRONTEND_URL || 'https://code-seed.vercel.app',
 };

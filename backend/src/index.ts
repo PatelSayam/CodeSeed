@@ -6,6 +6,15 @@ import chatRoutes from "./routes/chat";
 import { config } from "./config/environment";
 
 const app = express();
+
+app.use(
+  cors({
+    origin: config.frontendUrl,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
 app.use(cors());
 app.use(express.json());
 
