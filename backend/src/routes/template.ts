@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { callGemini } from '../services/ai.services.ts';
-import { BASE_PROMPT } from '../prompts.ts';
-import { basePrompt as nodeBasePrompt } from '../defaults/node.ts';
-import { basePrompt as reactBasePrompt } from '../defaults/react.ts';
-import { AIMessage, ErrorResponse, TemplateResponse } from '../types/index.ts';
+import { callGemini } from '../services/ai.service';
+import { BASE_PROMPT } from '../prompts';
+import { basePrompt as nodeBasePrompt } from '../defaults/node';
+import { basePrompt as reactBasePrompt } from '../defaults/react';
+import { AIMessage, ErrorResponse, TemplateResponse } from '../types';
 
 const router = Router();
 
@@ -34,6 +34,7 @@ router.post('/', async (req, res) => {
     } else if (answer === 'node') {
       const response: TemplateResponse = {
         prompts: [
+          BASE_PROMPT,
           `Here is an artifact that contains all files of the project visible to you.\nConsider the contents of ALL files in the project.\n\n${nodeBasePrompt}\n\nHere is a list of files that exist on the file system but are not being shown to you:\n\n  - .gitignore\n  - package-lock.json\n`,
         ],
         uiPrompts: [nodeBasePrompt],

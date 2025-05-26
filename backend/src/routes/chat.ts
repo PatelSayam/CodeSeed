@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { callGemini } from '../services/ai.services.ts';
-import { getSystemPrompt } from '../prompts.ts';
-import { AIMessage, ChatResponse, ErrorResponse } from '../types/index.ts';
+import { callGemini } from '../services/ai.service';
+import { getSystemPrompt } from '../prompts';
+import { AIMessage, ChatResponse, ErrorResponse } from '../types';
 
 const router = Router();
 

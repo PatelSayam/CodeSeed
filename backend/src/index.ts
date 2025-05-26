@@ -1,23 +1,18 @@
-import dotenv from "dotenv";
-import express from "express";
+require('dotenv').config();
+import express from 'express';
 import cors from 'cors';
-
-import chatRoutes from './routes/chat.ts';
-import templateRoutes from './routes/template.ts'
-
-dotenv.config({
-  path: "./.env",
-});
+import templateRoutes from './routes/template';
+import chatRoutes from './routes/chat';
+import { config } from './config/environment';
 
 const app = express();
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
-
-app.use('/chat', chatRoutes);
+// Setup routes
 app.use('/template', templateRoutes);
+app.use('/chat', chatRoutes);
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`server is running on port ${process.env.PORT}`);
-})
-
+app.listen(config.port, () => {
+  console.log(`Gemini server running on http://localhost:${config.port}`);
+});
