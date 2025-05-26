@@ -10,8 +10,8 @@ app.use(cors());
 app.use(express.json());
 
 // Setup routes
-app.use("/", () => {
-  console.log("Backend server running...");
+app.get("/", (req, res) => {
+  res.status(200).json({ msg: "backend server is running" });
 });
 app.use("/template", templateRoutes);
 app.use("/chat", chatRoutes);
