@@ -63,12 +63,12 @@ It's designed for developers, designers, and entrepreneurs who want to quickly p
 
    - For frontend:
      ```bash
-     cd client
+     cd frontend
      npm install
      ```
    - For backend:
      ```bash
-     cd server
+     cd backend
      npm install
      ```
 
@@ -82,12 +82,12 @@ It's designed for developers, designers, and entrepreneurs who want to quickly p
 4. **Run the project**
    - Start the backend:
      ```bash
-     cd server
+     cd backend
      npm run start
      ```
    - Start the frontend:
      ```bash
-     cd client
+     cd frontend
      npm run dev
      ```
 
